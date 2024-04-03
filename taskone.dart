@@ -1,7 +1,7 @@
 void main(){
   TaskManager taskMan = new TaskManager();
-  taskMan.addTask('task1','description1',DateTime.now(),'completed');
-  taskMan.addTask('task2','description2',DateTime.now(),'pending');
+  taskMan.addTask('task1','description1',DateTime.now());
+  taskMan.addTask('task2','description2',DateTime.now());
   taskMan.viewTask();
   taskMan.viewCompletedTask();
 }
@@ -12,18 +12,18 @@ class Tasks{
   DateTime dueDate;
   String status;
 
- 
-  Tasks(this.name,this.description,this.dueDate):status = 'pending';
 
-    
+  Tasks(this.name,this.description,this.dueDate):status = 'pending';
+   
+  
 
 }
 
 class TaskManager{
   List<Tasks> task= [];
 
-  void addTask(String name, String description,DateTime dueDate,String status){
-    Tasks newTask = new Tasks(name,description,dueDate,status);
+  void addTask(String name, String description,DateTime dueDate){
+    Tasks newTask = new Tasks(name,description,dueDate);
     task.add(newTask);
     
     print("Task Added");
