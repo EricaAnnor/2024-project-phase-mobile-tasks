@@ -12,13 +12,10 @@ class Tasks{
   DateTime dueDate;
   String status;
 
+ 
+  Tasks(this.name,this.description,this.dueDate):status = 'pending';
 
-  Tasks(this.name,this.description,this.dueDate,this.status){
-    this.name = name;
-    this.description = description;
-    this.dueDate = dueDate;
-    this.status = status;
-  }
+    
 
 }
 
