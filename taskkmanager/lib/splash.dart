@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskkmanager/todo.dart';
 
 class Splash extends StatelessWidget {
   const Splash({super.key});
@@ -25,10 +26,26 @@ class Splash extends StatelessWidget {
                     shape: const RoundedRectangleBorder()),
                 child: const Text("Get Started",
                     style: TextStyle(fontSize: 20, color: Colors.white)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(_nextRoute());
+                },
               ),
             ),
           ])),
     );
+  }
+
+  Route _nextRoute() {
+    return PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => const Todo(),
+        transitionsBuilder: (context, animation, secondary, child) {
+          const begin = Offset(1.0, 0.0); // Start at left (off-screen)
+          const end = Offset(0.0, 0.0);
+          const curve = Curves.ease;
+          final tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          return SlideTransition(
+              position: animation.drive(tween), child: child);
+        });
   }
 }

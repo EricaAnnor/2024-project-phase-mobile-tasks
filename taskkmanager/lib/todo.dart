@@ -13,7 +13,7 @@ class Todo extends StatelessWidget {
             icon: const Icon(Icons.arrow_back_ios,
                 color: Color.fromRGBO(238, 111, 87, 1)),
             onPressed: () {
-              print("Back button clicked");
+              Navigator.pop(context);
             },
           ),
           title: const Text("Todo List"),
@@ -35,4 +35,6 @@ class Todo extends StatelessWidget {
       ),
     );
   }
+
+  
 }

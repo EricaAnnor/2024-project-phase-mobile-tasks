@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:taskkmanager/body.dart';
 
 class TaskBody extends StatelessWidget {
-  const TaskBody({super.key});
+  final Body bod;
+
+  const TaskBody({super.key, required this.bod});
 
   @override
   Widget build(context) {
@@ -13,61 +16,60 @@ class TaskBody extends StatelessWidget {
           'assets/shopping.png',
           width: 220,
         )),
-        const Padding(
-          padding: EdgeInsets.only(top: 10),
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(10.0),
               child: Text("Title", style: TextStyle(fontSize: 24)),
             ),
             Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: Card(
-                color: Color.fromRGBO(241, 238, 238, 1),
+                color: const Color.fromRGBO(241, 238, 238, 1),
                 child: SizedBox(
                     width: 440,
                     height: 60,
                     child: Padding(
-                      padding: EdgeInsets.all(14.0),
-                      child: Text("UI/UX App Design",
-                          style: TextStyle(fontSize: 18)),
+                      padding: const EdgeInsets.all(14.0),
+                      child:
+                          Text(bod.name, style: const TextStyle(fontSize: 18)),
                     )),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(10.0),
               child: Text("Description", style: TextStyle(fontSize: 20)),
             ),
             Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Card(
-                  color: Color.fromRGBO(241, 238, 238, 1),
+                  color: const Color.fromRGBO(241, 238, 238, 1),
                   child: SizedBox(
                       width: 440,
                       height: 90,
                       child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                            'First I have to animate the logo and prototyping my design. It’svery important.',
-                            style: TextStyle(fontSize: 18)),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(bod.description,
+                            style: const TextStyle(fontSize: 18)),
                       )),
                 )),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(10.0),
               child: Text("Deadline", style: TextStyle(fontSize: 22)),
             ),
             Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: Card(
-                  color: Color.fromRGBO(241, 238, 238, 1),
+                  color: const Color.fromRGBO(241, 238, 238, 1),
                   child: SizedBox(
                       width: 440,
                       height: 60,
                       child: Padding(
-                        padding: EdgeInsets.all(14.0),
-                        child: Text('April 29,2023',
-                            style: TextStyle(fontSize: 16)),
+                        padding: const EdgeInsets.all(14.0),
+                        child: Text(bod.date,
+                            style: const TextStyle(fontSize: 16)),
                       ))),
             )
           ]),
