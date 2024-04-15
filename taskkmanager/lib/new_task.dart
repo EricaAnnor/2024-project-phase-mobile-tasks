@@ -34,6 +34,7 @@ class AddTask extends StatelessWidget {
                 child: const Center(
                   child: Text(
                     'Create new task',
+                    key: Key('newTester'),
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -63,6 +64,7 @@ class AddTask extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(12),
                         child: TextField(
+                          key: const Key('nameTest'),
                           onChanged: (text) {
                             nName = text;
                             print(nName);
@@ -98,6 +100,7 @@ class AddTask extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextField(
+                          key: const Key('dateTest'),
                           onChanged: (text) {
                             nDate = text;
                             print(nDate);
@@ -143,6 +146,7 @@ class AddTask extends StatelessWidget {
                           width: 460,
                           height: 120,
                           child: TextField(
+                            key: const Key('desTest'),
                             onChanged: (text) {
                               nDescription = text;
                               print(nDescription);
@@ -165,6 +169,7 @@ class AddTask extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 40),
                     child: Center(
                       child: ElevatedButton(
+                        key: const Key('addtaskbtn'),
                         onPressed: () {
                           // Handle add task button press
                           if (nName != '' &&

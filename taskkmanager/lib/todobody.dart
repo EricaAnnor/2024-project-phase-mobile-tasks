@@ -20,6 +20,7 @@ class _TodobodyState extends State<Todobody> {
     return SingleChildScrollView(
       child: Column(
         // crossAxisAlignment: CrossAxisAlignment.start,
+        key: const Key('todoColumn'),
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
@@ -28,6 +29,7 @@ class _TodobodyState extends State<Todobody> {
           const Padding(
             padding: EdgeInsets.all(20.0),
             child: Text("Tasks List",
+                key: (Key('tasklists')),
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -39,6 +41,7 @@ class _TodobodyState extends State<Todobody> {
               child: Column(
                 children: [
                   ...tasks.map((task) => Card(
+                      key: Key(task.name),
                       color: Colors.white,
                       child: _tile(
                           (task.name.isNotEmpty) ? task.name[0] : 'U',
@@ -71,6 +74,7 @@ class _TodobodyState extends State<Todobody> {
             padding: const EdgeInsets.only(top: 30),
             child: Center(
               child: ElevatedButton(
+                key: const Key('_todo'),
                 style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(238, 111, 87, 1),
                     padding: const EdgeInsets.symmetric(
@@ -182,6 +186,4 @@ class _TodobodyState extends State<Todobody> {
               position: animation.drive(tween), child: child);
         });
   }
-
-  
 }

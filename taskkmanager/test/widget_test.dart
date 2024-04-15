@@ -7,24 +7,95 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:taskkmanager/main.dart';
+import 'package:taskkmanager/body.dart';
+import 'package:taskkmanager/new_task.dart';
+import 'package:taskkmanager/splash.dart';
+import 'package:taskkmanager/todo.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Splash Screen navigation', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const MaterialApp(home: Splash()));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.byKey(const Key('splashBtn')), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    //Splash screen navigation
+    await tester.tap(find.byKey(const Key('splashBtn')));
+    await tester.pumpAndSettle();
+
+    expect(find.byKey(const Key('tasklists')), findsOneWidget);
+  });
+
+  testWidgets('Checking if AddTodo navigations work correctly',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(home: Todo()));
+
+    expect(find.byKey(const Key('_todo')), findsOneWidget);
+
+    await tester.tap(find.byKey(const Key('_todo')));
+    await tester.pumpAndSettle();
+
+    expect(find.byKey(const Key('newTester')), findsOneWidget);
+    expect(find.byKey(const Key('nameTest')), findsOneWidget);
+    expect(find.byKey(const Key('dateTest')), findsOneWidget);
+    expect(find.byKey(const Key('desTest')), findsOneWidget);
+    expect(find.byKey(const Key('addtaskbtn')), findsOneWidget);
+
+    // await tester.tap(find.byKey(Key('addtaskbtn')));
+    // await tester.pumpAndSettle();
+
+    // expect(find.byKey(const Key('_todo')), findsOneWidget);
+  });
+
+  testWidgets('checking if tasks are added sucessfully',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(home: Todo()));
+
+    // expect(find.byKey(const Key('nameTest')), findsOneWidget);
+    // expect(find.byKey(const Key('dateTest')), findsOneWidget);
+    // expect(find.byKey(const Key('desTest')), findsOneWidget);
+    // expect(find.byKey(const Key('addtaskbtn')), findsOneWidget);
+
+    await tester.tap(find.byKey(Key('_todo')));
+    await tester.pumpAndSettle();
+
+    await tester.enterText(find.byKey(const Key('nameTest')), 'Erica');
+    await tester.enterText(find.byKey(const Key('dateTest')), '22-08-23');
+    await tester.enterText(find.byKey(const Key('desTest')), 'This is me');
+
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const Key('addtaskbtn')));
+    await tester.tap(find.byKey(const Key('addtaskbtn')));
+    await tester.pumpAndSettle();
+
+    expect(find.byKey(const Key('Erica')), findsOneWidget);
+
+    //checking behaviour with empty task names
+
+    await tester.tap(find.byKey(Key('_todo')));
+    await tester.pumpAndSettle();
+
+    await tester.enterText(find.byKey(const Key('nameTest')), '');
+    await tester.enterText(find.byKey(const Key('dateTest')), '');
+    await tester.enterText(find.byKey(const Key('desTest')), '');
+
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const Key('addtaskbtn')));
+    await tester.tap(find.byKey(const Key('addtaskbtn')));
+    await tester.pumpAndSettle();
+
+    expect(find.byKey(const Key('')), findsNothing);
+
+  });
+
+  testWidgets('checking if tasks are displayed correctly on the todo screen',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(home: Todo()));
+
+   
+
     await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.byKey(const Key('todoColumn')), findsOneWidget);
+    
   });
 }

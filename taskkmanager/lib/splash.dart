@@ -13,12 +13,14 @@ class Splash extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 140.0),
               child: Center(
+                key: const Key('painter'),
                 child: Image.asset('assets/painting.png'),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 100),
               child: ElevatedButton(
+                key: const Key('splashBtn'),
                 style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(12, 140, 233, 1),
                     padding: const EdgeInsets.symmetric(
