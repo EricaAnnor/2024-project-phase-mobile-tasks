@@ -7,10 +7,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:taskkmanager/body.dart';
-import 'package:taskkmanager/new_task.dart';
-import 'package:taskkmanager/splash.dart';
-import 'package:taskkmanager/todo.dart';
+import 'package:taskkmanager/data/body.dart';
+import 'package:taskkmanager/presentation/pages/new_task.dart';
+import 'package:taskkmanager/presentation/pages/splash.dart';
+import 'package:taskkmanager/presentation/pages/todo.dart';
 
 void main() {
   testWidgets('Splash Screen navigation', (WidgetTester tester) async {
