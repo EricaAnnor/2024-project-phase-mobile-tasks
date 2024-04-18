@@ -4,6 +4,7 @@ import 'package:taskkmanager/domain/entities/task.dart';
 
 abstract class TodoRepo {
   List<Task> taskList = [];
+  int count = 0;
 
   Future<Either<Failure, String>> createTodo(
       String? title, String? description, DateTime? date) async {
@@ -12,7 +13,8 @@ abstract class TodoRepo {
         return Left(Failure('Task creation was not successful'));
       }
 
-      Task newTask = Task(title, date, description);
+      Task newTask = Task(
+          id: count++, title: title, deadline: date, description: description);
       taskList.add(newTask);
 
       return Right('Task created successfully');
@@ -32,7 +34,6 @@ abstract class TodoRepo {
       return Future.value(Left(Failure('An unexpected error occurred')));
     }
   }
-  
 
   Future<Either<Failure, Task>> viewATodo(String id) {
     try {
@@ -46,5 +47,4 @@ abstract class TodoRepo {
       return Future.value(Left(Failure('An unexpected error occurred')));
     }
   }
-
 }

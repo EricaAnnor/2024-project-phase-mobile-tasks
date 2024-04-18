@@ -4,7 +4,7 @@ import 'package:taskkmanager/core/usescase.dart';
 import 'package:taskkmanager/domain/entities/task.dart';
 import 'package:taskkmanager/domain/repositories/repository.dart';
 
-class ViewTask extends Usecase<List<Task>, String> {
+class ViewTask implements Usecase<List<Task>, String> {
   final TodoRepo repo;
 
   ViewTask(this.repo);

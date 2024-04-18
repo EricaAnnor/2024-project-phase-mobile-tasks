@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
 class Task {
-  String id;
+  int id;
   String title;
   String description;
   DateTime deadline;
   // Color? color;
 
-  Task(this.title, this.deadline, this.description)
-      : id = const Uuid().v4();
+  Task({required this.id,required this.title, required this.deadline,required this.description});
 }

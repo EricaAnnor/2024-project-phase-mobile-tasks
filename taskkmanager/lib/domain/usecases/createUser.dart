@@ -4,7 +4,7 @@ import 'package:taskkmanager/core/usescase.dart';
 import 'package:taskkmanager/domain/repositories/repository.dart';
 import 'package:taskkmanager/domain/entities/task.dart';
 
-class CreateUser extends Usecase<String, Task> {
+class CreateUser implements Usecase<String, Task> {
   final TodoRepo repo;
 
   CreateUser(this.repo);
