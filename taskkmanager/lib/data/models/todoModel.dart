@@ -12,7 +12,7 @@ class TodoModel extends Task {
         'id':id,
         'title': title,
         'description': description,
-        'deadline': deadline,
+        'deadline': deadline.toIso8601String(),
       };
 
   factory TodoModel.fromJson(Map<String, dynamic> json) {
@@ -20,7 +20,7 @@ class TodoModel extends Task {
       id: json['id'] as int,
       title: json['title'] as String,
       description: json['description'] as String,
-      deadline: json['deadLine'] as DateTime,
+      deadline:  DateTime.parse(json['deadline']),
     );
   }
 }
